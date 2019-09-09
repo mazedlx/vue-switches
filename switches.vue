@@ -54,13 +54,15 @@ export default {
             default: true
         }
     },
-
-    mounted () {
+    
+    mounted: function () {
+      this.$nextTick(function () {
         if(this.emitOnMount) {
             this.$emit('input', this.value)
         }
+      })
     },
-
+    
     methods: {
         trigger (e) {
             this.$emit('input', e.target.checked)
