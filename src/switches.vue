@@ -54,15 +54,13 @@ export default {
             default: true
         }
     },
-    
-    mounted: function () {
-      this.$nextTick(function () {
+
+    mounted () {
         if(this.emitOnMount) {
             this.$emit('input', this.value)
         }
-      })
     },
-    
+
     methods: {
         trigger (e) {
             this.$emit('input', e.target.checked)
@@ -94,11 +92,10 @@ export default {
 
 </script>
 
-
 <style lang="scss">
     /**
-     * Default
-     */
+    * Default
+        */
     $color-default-default: #aaa;
     $color-default-green: #53b96e;
     $color-default-blue: #539bb9;
@@ -107,12 +104,12 @@ export default {
     $color-default-yellow: #bab353;
 
     $theme-default-colors: (
-        default : $color-default-default,
-        blue    : $color-default-blue,
-        red     : $color-default-red,
-        yellow  : $color-default-yellow,
-        orange  : $color-default-orange,
-        green   : $color-default-green
+            default : $color-default-default,
+            blue    : $color-default-blue,
+            red     : $color-default-red,
+            yellow  : $color-default-yellow,
+            orange  : $color-default-orange,
+            green   : $color-default-green
     );
 
     /**
@@ -126,12 +123,12 @@ export default {
     $color-bulma-green: #22c65b;
 
     $theme-bulma-colors: (
-        default : $color-bulma-default,
-        primary : $color-bulma-primary,
-        blue    : $color-bulma-blue,
-        red     : $color-bulma-red,
-        yellow  : $color-bulma-yellow,
-        green   : $color-bulma-green
+            default : $color-bulma-default,
+            primary : $color-bulma-primary,
+            blue    : $color-bulma-blue,
+            red     : $color-bulma-red,
+            yellow  : $color-bulma-yellow,
+            green   : $color-bulma-green
     );
 
     /**
@@ -145,12 +142,12 @@ export default {
     $color-bootstrap-danger: #c9302c;
 
     $theme-bootstrap-colors: (
-        default : $color-bootstrap-default,
-        primary : $color-bootstrap-primary,
-        success : $color-bootstrap-success,
-        info    : $color-bootstrap-info,
-        warning : $color-bootstrap-warning,
-        danger  : $color-bootstrap-danger
+            default : $color-bootstrap-default,
+            primary : $color-bootstrap-primary,
+            success : $color-bootstrap-success,
+            info    : $color-bootstrap-info,
+            warning : $color-bootstrap-warning,
+            danger  : $color-bootstrap-danger
     );
 
     .vue-switcher {
@@ -173,8 +170,8 @@ export default {
         }
 
         div {
-            height: 10px;
-            width: 40px;
+            height: 15px;
+            width: 36px;
             position: relative;
             border-radius: 30px;
             display: -webkit-flex;
@@ -183,20 +180,21 @@ export default {
             align-items: center;
             justify-content: flex-start;
             cursor: pointer;
-            transition: all ease .4s;
+            transition: linear .2s, background-color linear .2s;
 
             &:after {
                 content: '';
-                height: 18px;
-                width: 18px;
+                height: 20px;
+                width: 20px;
                 border-radius: 100px;
                 display: block;
-                transition: all ease .3s;
+                transition: linear .15s, background-color linear .15s;
                 position: absolute;
                 left: 100%;
-                margin-left: -17px;
+                margin-left: -18px;
                 cursor: pointer;
-                top: -4px;
+                top: -3px;
+                box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
             }
         }
 
@@ -227,15 +225,15 @@ export default {
                 width: 51px;
 
                 &:after {
-                    margin-left: -22px;
-                    top: 4px;
+                    margin-left: -24px;
+                    top: 3px;
                 }
             }
 
             &--unchecked {
                 div {
                     &:after {
-                        left: 26px;
+                        left: 28px;
                     }
                 }
             }
@@ -368,7 +366,5 @@ export default {
                 }
             }
         }
-
     }
-
 </style>
