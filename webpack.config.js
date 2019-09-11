@@ -1,9 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 const VueTemplateCompiler = require('vue-template-compiler');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -35,6 +37,9 @@ module.exports = {
       compiler: VueTemplateCompiler,
     }),
   ],
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  },
   devtool: '#cheap-module-eval-source-map',
 };
 
@@ -45,12 +50,6 @@ if (process.env.NODE_ENV === 'production') {
       'process.env': {
         NODE_ENV: '"production"',
       },
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-      sourceMap: false,
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
   ]);
